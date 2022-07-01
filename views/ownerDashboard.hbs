@@ -1,0 +1,79 @@
+
+
+<div class = "dashBoardBody full-screen-div " >
+<div class = "edit-info-bar  uk-float-left">
+	<ul class = "off-canvas-options" >
+		<li role = "none" class = "off-canvasOption">
+		<a class = "off-canvas-options-btn create-order-modal-btn " href="#create-order-modal" uk-toggle>
+			<h3 class = "medium-text"> Create User</h3>
+			<div uk-icon="plus"></div></a>
+		</li>
+		<li role = "none" class = "seprator"></li>
+		<li role = "none" class = "off-canvasOption">
+		<a class = "off-canvas-options-btn create-order-modal-btn " href="#create-order-modal" uk-toggle>
+			<h3 class = "medium-text"> Add brands</h3>
+			<div uk-icon="plus"></div></a>
+		</li>
+		<li role = "none" class = "seprator"></li>
+		<li role = "none" class = "off-canvasOption">
+		<a class = "off-canvas-options-btn create-order-modal-btn " href="#create-order-modal" uk-toggle>
+			<h3 class = "medium-text"> Third option</h3>
+			<div uk-icon="plus"></div></a>
+		</li>
+		<li role = "none" class = "seprator"></li>
+		<li role = "none" class = "off-canvasOption">
+		<a class = "off-canvas-options-btn create-order-modal-btn " href="#create-order-modal" uk-toggle>
+			<h3 class = "medium-text"> Fourth option</h3>
+			<div uk-icon="plus"></div></a>
+		</li>
+		<li role = "none" class = "seprator"></li>
+		<li role = "none" class = "off-canvasOption">
+		<a class = "off-canvas-options-btn create-order-modal-btn " href="#create-order-modal" uk-toggle>
+			<h3 class = "medium-text"> Fifth option</h3>
+			<div uk-icon="plus"></div></a>
+		</li>
+		
+	</ul>
+</div>
+<div class = "data-view-section uk-position-relative uk-float-left">
+	<ul uk-tab>
+	    <li><a href="#">Users</a></li>
+	    <li><a href="#">Orders</a></li>
+	    <li><a href="#">Companies</a></li>
+	</ul>
+
+	<ul class="uk-switcher uk-margin">
+	    <li>
+	    	{{#if (not_equal specificInformation.users none)}}
+				{{#if (length_0 specificInformation.users)}}
+					<dl class="uk-description-list uk-description-list-divider">
+			    		<dt>No user found</dt>
+				    	<dd>...</dd>
+					</dl>	
+				{{else}}
+					<dl class="uk-description-list uk-description-list-divider">
+						{{#each specificInformation.users as |userInfo| }}
+							<dt>{{userInfo.fname}}</dt>
+							<ul class="user-info-list">
+								{{#each userInfo}}
+										<li class = "users-info-li">{{@key}} : &nbsp;&nbsp;&nbsp;{{this}}</li>
+								{{/each}}
+							</ul>
+						{{/each}}	
+					</dl>	
+				{{/if}}
+			{{else}}
+				<dl class="uk-description-list uk-description-list-divider">
+					<dt>No user found</dt>
+					<dd>...</dd>
+				</dl>	
+			{{/if}}
+
+	    </li>
+	    <li>Orders are currently unavalable.</li>
+	    <li>Companies information is unavalavle right now.</li>
+	</ul>
+</div>
+
+
+</div>
