@@ -2041,8 +2041,10 @@ select.uk-form-width-xsmall {
   font-size: 0.875rem;
 }
 .uk-button-large {
-  padding: 0 40px;
   border-radius: 2rem;
+  max-height: 2rem;
+  line-height: 2;
+  overflow: hidden;
 }
 /* Text modifiers
  ========================================================================== */
