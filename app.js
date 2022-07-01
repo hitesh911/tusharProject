@@ -10,7 +10,7 @@ const temporary_cred = require(path.join(__dirname, "/credentials/temporary_cred
 // giving session argument to (connect-mongodb-session) method 
 const mongoDbStore = require("connect-mongodb-session")(session)
 const App = express()
-const port = 3000
+const port = process.env.PORT || 3000
 // DATABASE  
 connecton = require("./database/db")
 
@@ -67,6 +67,6 @@ App.use("/" , require(path.join(__dirname ,"routes/myrouts.js")))
 
 
 App.listen(port , ()=>{
-	console.log(`App listening on http://localhost:${port}`)
+	console.log(`App listening on :${port}`)
 })
 
