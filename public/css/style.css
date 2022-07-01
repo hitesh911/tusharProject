@@ -749,31 +749,7 @@ body{
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
 
 }
-  .google-icon-wrapper {
-    position: absolute;
-    margin-top: 1px;
-    margin-left: 1px;
-    width: 40px;
-    height: 40px;
-    border-radius: 2px;
-    background-color: $white;
-  }
- 
-  .btn-text {
-    float: right;
-    margin: 11px 11px 0 0;
-    color: $white;
-    font-size: 14px;
-    letter-spacing: 0.2px;
-    font-family: "Roboto";
-  }
-  &:hover {
-    box-shadow: 0 0 6px $google-blue;
-  }
-  &:active {
-    background: $button-active-blue;
-  }
-}
+
 .filter-dropdown-btn {
     margin: 0px;
     appearance: none;
@@ -794,8 +770,14 @@ body{
     border: none;
     
 }
+.left-margin-little{
+    margin-left: .6rem;
+}
 .filter-dropdown{
     background-color: #f0f8ff;
+}
+.add-new-btn{
+    background-color: #1b440e;
 }
 /*responce*/
 
@@ -860,6 +842,9 @@ body{
     .profile-dropdown-div{
         min-width: 43vw !important;
     }
+    .tab-list{
+        display: none !important; 
+    }
 
 }@media only screen and (max-width: 520px){
     .profile-dropdown-div{
@@ -872,5 +857,12 @@ body{
 }@media only screen and (max-width: 550px){
    .users-info-li{
     flex: none;
+   }
+}@media only screen and (max-width: 400px){
+   .filter-dropdown-btn{
+    display: none !important;
+   }
+   .search-btn-div{
+    display: none !important;
    }
 }

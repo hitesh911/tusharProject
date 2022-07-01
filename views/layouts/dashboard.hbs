@@ -138,7 +138,7 @@
  				<div class = "nav-section order-section">
  					{{!-- this is search bar  --}}
  					<div class="uk-navbar-right">
-				        <div>
+				        <div class = "search-btn-div">
 				            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
 				            <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
 				                <form class="uk-search uk-search-navbar uk-width-1-1">
@@ -150,7 +150,6 @@
  					{{!-- this is filter button  --}}
  					<div>
  						<button class = "filter-dropdown-btn">
- 							<div class = "just-div"></div>
  							<div class = "profile-button-container">
  								<div class = "user-icon" uk-icon="tag"></div>
  									<span class = "user-name">Filter</span>
@@ -226,8 +225,12 @@
  				</div>
  				{{!-- right section  --}}
  				<div class = "nav-section">
- 					right section
+ 					    <button class="add-new-btn uk-button uk-button-primary uk-button-large">New
+ 					    	<span uk-tooltip = "Whatsapp" class="left-margin-little pointer-events " uk-icon="icon: plus-circle"></span>
+ 					    </button>
+
  				</div>
+
 
  			</nav>
  		</section>
