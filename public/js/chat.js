@@ -4,7 +4,7 @@ const sendForm = document.getElementById('send-container');
 const messageContainer = document.querySelector("#message-container")
 const typingNote = document.getElementById("typing-note")
 //Socket server URL
-const socket = io.connect( `http://${window.location.host}`);
+const socket = io.connect( `https://${window.location.host}`);
 
 const username = document.getElementById("student-name").innerHTML
 // utility functions 
