@@ -10,6 +10,10 @@
     <!-- uikit stuff  -->
     <link rel="stylesheet" href="css/uikit-rtl.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    {{!-- js cdn --}}
+    {{!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>--}}
+    <script src="/socket.io/socket.io.js"></script>
     
 
 </head>
@@ -86,10 +90,10 @@
  							<div class = "just-div"></div>
  							<div class = "profile-button-container">
  								<div class = "user-icon" uk-icon="users"></div>
- 								{{#if (not_equal dashboardContext.fname null) }}
- 									<span class = "user-name">{{dashboardContext.fname}}</span>
+ 								{{#if (not_equal studentDetails.doc.student_name null) }}
+ 									<span id="student-name" class = "user-name">{{studentDetails.doc.student_name}}</span>
  								{{else}}
- 									<span class = "user-name">unknown</span>
+ 									<span id="student-name" class = "user-name">unknown</span>
  								{{/if}}
  								<div class = "down-icon" uk-icon="triangle-down"></div>
  							</div>
@@ -98,15 +102,21 @@
  							<div class = "profile-inner-div">
  								<ul class = "profile-list">
  									<li role = "none" class = "profile-list-info">
- 										<div class = "profile-inner-logo" uk-icon="users"></div>
- 										{{#if (not_equal dashboardContext.fname null) }}
- 											<h3 class = "profile-inner-heading">{{dashboardContext.fname}}</h3>
+ 										{{#if studentDetails.picture}}
+ 											<div class = "profile-inner-logo">
+ 												<img class="google-icon" src="{{studentDetails.picture}}">
+ 											</div>
+ 										{{else}}
+ 											<div class = "profile-inner-logo" uk-icon="users"></div>
+ 										{{/if}}
+ 										{{#if (not_equal studentDetails.doc.student_name null) }}
+ 											<h3 class = "profile-inner-heading">{{studentDetails.doc.student_name}}</h3>
  										{{else}}
  											<h3 class = "profile-inner-heading">unknown</h3>
  										{{/if}}
 
- 										{{#if (not_equal dashboardContext.email null) }}
- 											<p class = "profile-inner-email">{{dashboardContext.email}}</p>
+ 										{{#if (not_equal studentDetails.doc.email null) }}
+ 											<p class = "profile-inner-email">{{studentDetails.doc.email}}</p>
  										{{else}}	
  											<p class = "profile-inner-email">unknown@email.com</p>
  										{{/if}}
@@ -114,14 +124,14 @@
  										<a class = "manage-account-btn" href="/user-settings">Manage account</a>
  									</li>
  									<li role = "none" class = "seprator"></li>
- 									{{#if (equal dashboardContext.position "user")}}
- 										{{>userSpecificOptions}}
- 									{{else if (equal dashboardContext.position "manager")}}
- 										{{>managerSpecificOptions}}
- 									{{else if (equal dashboardContext.position "owner")}}
- 										{{>ownerSpecificOptions}}
+ 									{{#if studentDetails}}
+ 										{{>studentSpecificOptions}}
  									{{else}}
- 										<li class = "simple-small-text" >nothing here...</li>
+ 										{{#if staffDetails}}
+ 										{{>staffSpecificOptions}}
+ 										{{else}}
+ 										<li class = "simple-small-text" > No Options.</li>
+ 										{{/if}}
  									{{/if}}
  									<li role = "none" class = "seprator"></li>
  								</ul>
@@ -161,20 +171,20 @@
 						    <div class=" uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
 						        <div>
 						            <ul class="uk-nav uk-dropdown-nav">
-						                <li class="uk-nav-header">Users</li>
+						                <li class="uk-nav-header">Rooms</li>
 						                <li><a href="#">JUFFLER</a></li>
-						                <li><a href="#">PRYANSHU</a></li>
-						                <li><a href="#">5MCK3R</a></li>
-						                <li><a href="#">NISHU</a></li>
+						                <li><a href="#">TUSHAR</a></li>
+						                <li><a href="#">HIMANSHU</a></li>
+						                <li><a href="#">ISHAM</a></li>
 						            </ul>
 						        </div>
 						        <div>
 						            <ul class="uk-nav uk-dropdown-nav">
-						                <li class="uk-nav-header">Products</li>
-						                <li><a href="#">NIKE</a></li>
-						                <li><a href="#">ADDI-DAS</a></li>
-						                <li><a href="#">5MCK3R</a></li>
-						                <li><a href="#">JUFFLER</a></li>
+						                <li class="uk-nav-header">Recent</li>
+						                <li><a href="#">KUNHAL</a></li>
+						                <li><a href="#">SUMIT</a></li>
+						                <li><a href="#">GENERAL</a></li>
+						                <li><a href="#">TEACHER's meeting</a></li>
 						            </ul>
 						        </div>
 						    </div>
@@ -247,6 +257,6 @@
     <script type="text/javascript" src="js/uikit-icons.min.js"></script>
 <!-- custon javascript  -->
     <script type = "text/javascript" src = "js/custom.js"></script>
-    
+    <script type = "text/javascript" src="js/chat.js"></script>
 </body>
 </html>

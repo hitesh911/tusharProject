@@ -22,10 +22,125 @@ body{
 	font-weight: 300;
 	background-color: #f0f8ff;
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
 /*coustom fonts section */
 @font-face{
 	font-family: nature;
 	src:url("../fonts/nature.ttf");
+}
+.message{
+    max-width: 50%;
+    padding: 10px 36px;
+    background-color: #f0f8ff;
+    border-radius: 0.7rem;
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+    margin: 20px 0px;
+    min-width: 24%;
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+p{
+    margin: 0 !important;
+}
+.message small{
+    color: #f15a5a;
+    text-align: left;
+}
+.right-chat{
+    float: right;
+    clear: both;
+}
+.left-chat{
+    float: left;
+    clear: both;
+}
+.window{
+    max-width: 90%;
+    margin: 1rem 0;
+    height: 50vh;
+    overflow-y: auto;
+    position: relative;
+}
+.notification{
+    margin: 1rem 0;
+    border: none !important;
+    width: 100%;
+    text-align: center;
+    float: right;
+    clear: both;
+}
+.chat-area{
+    
+    background-color: #f0f8ff;
+    border-radius: 1rem;
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+    width: 90%;
+    margin: 1.5rem auto;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+#typing-note{
+    margin-top:1.5rem;
+}
+.full-screen{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: right;
+}
+#message_input{
+    height: 100%;
+    width: 75%;
+    background-color: transparent;
+    border: none;
+}
+input:focus{
+    outline: none !important;
+}
+
+#msg-submit-btn{
+    height: 100%;
+    width: 20%;
+    border-radius: 4px;
+}
+#msg-submit-icon{
+    height: 100%;
+    width: 20%;
+    border-radius: 4px;
+    display: none;
+}
+.send-section{
+    background-color: #f0f8ff;
+    border-radius: .5rem;
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+    max-width: 90%;
+    margin:auto;
+    min-height: 3rem;
+    position: relative;
+}
+.google-icon{
+    border-radius: 7rem;
+    height: 2rem;
+}
+.clg-name{
+    color: #dea3a2 !important;
+    font-weight: 700;
 }
 .outer-one{
     width: 100vw;
@@ -852,6 +967,13 @@ body{
     }
     .toast{
         max-width: 80vw;
+    }
+    #msg-submit-icon{
+        display: unset !important;
+
+    }
+    #msg-submit-btn{
+        display: none;
     }
 
 }@media only screen and (max-width: 550px){

@@ -5,14 +5,19 @@ const exphbs  = require('express-handlebars')
 const cookieParser = require("cookie-parser")
 const session = require("express-session")
 const temporary_cred = require(path.join(__dirname, "/credentials/temporary_cred"))
+const App = express()
+const server = require("http").Server(App)
+const io = require('socket.io')(server)
+const socket = require(path.join(__dirname, "socket"))
 
+socket(io)
 
 // giving session argument to (connect-mongodb-session) method 
 const mongoDbStore = require("connect-mongodb-session")(session)
-const App = express()
+
 const port = process.env.PORT || 3000
 // DATABASE  
-connecton = require("./database/db")
+connection = require("./database/db")
 
 // ADDING TEMPLATES ENGINE 
 // coustom configrations for handlebar 
@@ -64,9 +69,7 @@ App.use((req,res,next)=>{
 App.use("/" , require(path.join(__dirname ,"routes/myrouts.js")))
 
 
-
-
-App.listen(port , ()=>{
+server.listen(port , ()=>{
 	console.log(`App listening on :${port}`)
 })
 

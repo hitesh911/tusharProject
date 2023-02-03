@@ -1,54 +1,56 @@
 const mongoose = require("mongoose")
 //------------ creating schema -----------------
-const userSchema = new mongoose.Schema({
-	fname:{
-		type: String,
+const studentSchema = new mongoose.Schema({
+	registration_status:{
+		type: Boolean,
 		required:true
-	},profile_name:{
-		type: String,
-		required:true
-	},position:{
-		type: String,
+	},student_id:{
+		type: Number,
 		required:true
 	},email:{
 		type: String,
 		required:false,
 		default:""
-	},telegram_id:{
+	},university_roll_no:{
+		type: Number,
+		required:true
+	},class_roll_no:{
+		type: Number,
+		required:true
+	},student_name:{
 		type: String,
+		required:true
+	},father_name:{
+		type: String,
+		required:true
+	},section:{
+		type: String,
+		required:true
+	},year_sem:{
+		type: Number,
+		required:true
+	},branch:{
+		type: String,
+		required:true
+	}
+})
+const staffSchema = new mongoose.Schema({
+	profName:{
+		type:String,
+		required:true
+	},
+	email:{
+		type:String,
 		required:false,
-		default:""
-	},whatsapp_no:{
-		type: String,
-		required:false
-	},alternate_whatsapp_no:{
-		type: String,
-		required:false,
-		default:""
-	},paytm_no:{
-		type: String,
-		required:false,
-		default:""
-	},google_pay_no:{
-		type: String,
-		required:false,
-		default:""
-	},phone_pay_no:{
-		type: String,
-		required:false,
-		default:""
-	},upi_id:{
-		type: String,
-		required:false,
-		default:""
-	},alternate_upi_id:{
-		type: String,
-		required:false,
-		default:""
+		default:''
 	}
 })
 
 
 // ----------------now creating modal ------------------
-const Register = mongoose.model("User",userSchema )
-module.exports = Register
+const Student = mongoose.model("Student",studentSchema )
+const Staff = mongoose.model("Staff",staffSchema)
+module.exports = {
+	Student,
+	Staff
+}
