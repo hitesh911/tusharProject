@@ -5,7 +5,7 @@ const {randomBytes} = require("crypto")
 const {
 	google
 } = require('googleapis')
-const googleApiCred = require(path.join(__dirname, "../credentials/googleApiLocalCred"))
+const googleApiCred = require(path.join(__dirname, "../credentials/googleCred"))
 const temporary_cred = require(path.join(__dirname, "../credentials/temporary_cred"))
 
 
