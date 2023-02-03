@@ -40,7 +40,7 @@ body{
 	font-family: nature;
 	src:url("../fonts/nature.ttf");
 }
-.message{
+.chat-message{
     max-width: 50%;
     padding: 10px 36px;
     background-color: #f0f8ff;
@@ -56,7 +56,7 @@ body{
 p{
     margin: 0 !important;
 }
-.message small{
+.chat-message small{
     color: #f15a5a;
     text-align: left;
 }

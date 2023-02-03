@@ -15,7 +15,7 @@ function appendMsg(name,msg,position){
     msgName.innerHTML = name
     msgName.classList.add("msg-name")
     const newMessage = document.createElement('div')
-    newMessage.classList.add("message")
+    newMessage.classList.add("chat-message")
     newMessage.classList.add(position)
     newMessage.append(msgName)
     newMessage.append(msgPara)
