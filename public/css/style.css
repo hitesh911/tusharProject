@@ -124,6 +124,7 @@ input:focus{
     width: 20%;
     border-radius: 4px;
     display: none;
+    padding: 5px;
 }
 .send-section{
     background-color: #f0f8ff;
