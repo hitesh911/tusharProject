@@ -566,10 +566,6 @@ router.get("/user-settings", (req, res) => {
 })
 
 
-
-
-
-
 // owner privlaged functions 
 router.post("/create-user", async (req, res) => {
 		try {
