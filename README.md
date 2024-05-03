@@ -33,7 +33,7 @@ Our Chat Room application offers a platform for students and staff members to en
 
 ### Home Screen (home.png)
 
-![Home Screen](home.png)
+![Home Screen](homescreen.png)
 
 The home screen serves as the entry point for users, where they can log in or create a new account. Students can log in using their Student ID or University Roll Number, while staff members can log in using their names. Google OAuth2 authentication is used for secure login.
 
