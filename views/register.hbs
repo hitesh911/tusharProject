@@ -1,0 +1,137 @@
+<div class = "register-form">
+                <div class=" uk-border-rounded uk-animation-slide-right-medium login-div uk-card uk-card-default">
+                    <div class="uk-card-body">
+                        <h4>Creating Account</h4>
+                        <form id = "create-account-form" action = "/create-student" method = "POST">
+                        	<div class = " register-form-rows uk-flex uk-flex-between uk-flex-wrap ">
+	                            <div class="register-form-columns ">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input  name = "fname" title = "It should be your real name" class=" login-input uk-input" required="true" type="text" placeholder="Full Name">
+	                                    <span   class="info-btn uk-form-icon" uk-tooltip = "Required" uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input  name = "profile_name" title = "It must associate with real account" required="true" class="login-input uk-input" type="text" placeholder="Profile Name (Amazom/Flipcart)">
+	                                    <span   uk-tooltip = "Required" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "telegram_id" class="login-input uk-input" type="text" placeholder="Telegram ID">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "whatsapp_no" required="true" pattern="^[0-9]{10}$" title = "It must be number of 10 digit" class="login-input uk-input" type="text" placeholder="WhatsApp no.">
+	                                    <span   uk-tooltip = "Required" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "alternate_whatsapp_no" pattern="^[0-9]{10}$" title = "It must be number of 10 digit" class="login-input uk-input" type="text" placeholder="Alternate no.">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name  = "paytm_no" pattern="^[0-9]{10}$" title = "It must be number of 10 digit" class="login-input uk-input" type="text" placeholder="Paytm no.">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "google_pay_no" pattern="^[0-9]{10}$" title = "It must be number of 10 digit" class="login-input uk-input" type="text" placeholder="Google-pay no.">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "phone_pay_no" pattern="^[0-9]{10}$" title = "It must be number of 10 digit" class="login-input uk-input" type="text" placeholder="Phone-pay no.">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input name = "upi_id" title = "It must be valid" pattern="a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}" class="login-input uk-input" type="text" placeholder="Primary UPI ID">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+
+	                            <div class="register-form-columns 	">
+	                                <div class="uk-inline uk-width-1-1">
+	                                    <input title = "It must be valid" pattern="a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}" name = "aternate_upi_id" class="login-input uk-input" type="text" placeholder="Alternate UPI ID">
+	                                    <span   uk-tooltip = "Optional" class=" info-btn otp-button uk-form-icon " uk-icon="icon: info"></span>
+	                                </div>
+	                            </div>
+
+
+	                         </div>
+                            <a href="#otp-verify-modal" class="anchor-btn uk-border-rounded uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" uk-toggle >Create Now</a>
+                             <div id="otp-verify-modal" uk-modal>
+								    <div class="uk-modal-dialog">
+								        <div class="uk-modal-header">
+								            <h2 class="uk-modal-title">Verifying Whatsapp number</h2>
+								        </div>
+								        <button class="uk-modal-close-default" type="button" uk-close></button>
+								        <div class="uk-modal-body">
+				                        	<div class = "register-form-rows uk-flex uk-flex-between uk-flex-wrap ">
+					                            <div class="register-otp-column">
+					                                <div class="uk-inline uk-width-1-1">
+					                                    <input form = "create-account-form" name = "otp" required="true" pattern="^[0-9]{6}$" title = "It must be number of 6 digit" class="login-input uk-input" type="text" placeholder="Otp.">
+					                                    <span  onclick = "sendOtp(this)" uk-tooltip = "send OTP" class=" info-btn otp-button uk-form-icon " uk-icon="icon: refresh"></span>
+					                                </div>
+					                            </div>
+					                         </div>
+					                         {{!-- this hidden input is for position  --}}
+					                         <input form = "create-account-form" type="hidden" name="position" , value = "user">
+				                            <button form = "create-account-form" type = "submit" value = "create-account" class="uk-border-rounded uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Create Account</button>
+								        </div>
+								        <div class="uk-modal-footer uk-text-right">
+								            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+								        </div>
+								    </div>
+							</div>
+                        </form>
+                        <a  href = "/google-register" class="google-login-btn  uk-border-rounded  uk-width-1-1 ">
+                        		<img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                <h3 class = "medium-text google-login-btn-text">
+                                    <strong>
+                                        <span class="g-blue">G</span>
+                                        <span class="o-red">o</span>
+                                        <span class="o-yellow">o</span>
+                                        <span class="g-blue">g</span>
+                                        <span class="l-green">l</span>
+                                        <span class="o-red e-red">e</span>
+                                    </strong>
+                                </h3>
+
+                            </a>
+                            <a href="/create-account" class="contact-us-btn full-width uk-border-rounded uk-display-block uk-card uk-card-body uk-card-default uk-link-toggle uk-width-medium">
+                                <h3 class="uk-card-title"><span class="uk-link-heading">Contact Us</span></h3>
+                                <p class = "small-text">We are always here to help you if you have any query Contact us now.</p>
+                            </a>
+                    </div>
+                </div>
+            </div>

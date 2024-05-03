@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- custom imports  -->
+    
+    <!-- uikit stuff  -->
+    <link rel="stylesheet" href="css/uikit-rtl.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    {{!-- js cdn --}}
+    {{!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>--}}
+    <script src="/socket.io/socket.io.js"></script>
+    
+
+</head>
+<body>
+
+	<div class = "toast-outer">
+	    <!-- this is for notification  -->
+	    {{#if message}}
+	           <div class="toast">
+	  
+	              <div class="toast-content">
+	                <i class="fas fa-solid fa-check check" uk-icon = "{{message.icon}}"></i>
+
+	                <div class="message">
+	                  <span class="text text-1">{{message.heading}}</span>
+	                  <span class="text text-2">{{message.msg}}</span>
+	                </div>
+	              </div>
+	              <i class="fa-solid fa-xmark closeToast" uk-icon = "close"></i>
+
+	              <div class="toastProgress" ></div>
+	            </div>
+	            <script>
+	                    // this is for toast msg 
+	                    toast = document.querySelector(".toast");
+	                    icon_circle = document.querySelector(".check");
+	                    closeIcon = document.querySelector(".closeToast")
+	                    progress = document.querySelector(".toastProgress");
+
+	                    function openToast(timeout , color) {
+	                        // changing color or toast accordingly 
+	                        icon_circle.style.backgroundColor = color;
+	                        progress.style.backgroundColor = color;
+	                        // specific variables 
+	                        timeout = parseInt(timeout);
+	                        toast.classList.add("active");
+	                        progress.classList.add("active");
+
+	                        timer1 = setTimeout(() => {
+	                            toast.classList.remove("active");
+	                        }, timeout); //1s = 1000 milliseconds
+
+	                        timer2 = setTimeout(() => {
+	                            progress.classList.remove("active");
+	                        }, timeout);
+	                    };
+
+	                    closeIcon.addEventListener("click", () => {
+	                        toast.classList.remove("active");
+
+	                        setTimeout(() => {
+	                            progress.classList.remove("active");
+	                        }, 300);
+
+	                        clearTimeout(timer1);
+	                        clearTimeout(timer2);
+	                    });
+	                    openToast("{{message.timeout}}" , "{{message.color}}");
+	            </script>
+
+	    {{/if}}
+	</div>
+
+<!-- navigation bar -->
+
+<div class = "full-screen-div">
+ 	<div classs = "top-header">
+ 		<section class = "header-section">
+ 			<nav class = "base-navigator">
+ 				<div class = "nav-section profile-section">
+ 					<a href="/" class = "site-icon" uk-icon="refresh"></a>
+ 					<div class = "divided-div">
+ 						<button class = "profile-dropdown">
+ 							<div class = "just-div"></div>
+ 							<div class = "profile-button-container">
+ 								<div class = "user-icon" uk-icon="users"></div>
+ 								{{#if (not_equal studentDetails.doc.student_name null) }}
+ 									<span id="student-name" class = "user-name">{{studentDetails.doc.student_name}}</span>
+ 								{{else}}
+ 									<span id="student-name" class = "user-name">unknown</span>
+ 								{{/if}}
+ 								<div class = "down-icon" uk-icon="triangle-down"></div>
+ 							</div>
+ 						</button>
+ 						<div class = "profile-dropdown-div"uk-dropdown="mode: click">
+ 							<div class = "profile-inner-div">
+ 								<ul class = "profile-list">
+ 									<li role = "none" class = "profile-list-info">
+ 										{{#if studentDetails.picture}}
+ 											<div class = "profile-inner-logo">
+ 												<img class="google-icon" src="{{studentDetails.picture}}">
+ 											</div>
+ 										{{else}}
+ 											<div class = "profile-inner-logo" uk-icon="users"></div>
+ 										{{/if}}
+ 										{{#if (not_equal studentDetails.doc.student_name null) }}
+ 											<h3 class = "profile-inner-heading">{{studentDetails.doc.student_name}}</h3>
+ 										{{else}}
+ 											<h3 class = "profile-inner-heading">unknown</h3>
+ 										{{/if}}
+
+ 										{{#if (not_equal studentDetails.doc.email null) }}
+ 											<p class = "profile-inner-email">{{studentDetails.doc.email}}</p>
+ 										{{else}}	
+ 											<p class = "profile-inner-email">unknown@email.com</p>
+ 										{{/if}}
+
+ 										<a class = "manage-account-btn" href="/user-settings">Manage account</a>
+ 									</li>
+ 									<li role = "none" class = "seprator"></li>
+ 									{{#if studentDetails}}
+ 										{{>studentSpecificOptions}}
+ 									{{else}}
+ 										{{#if staffDetails}}
+ 										{{>staffSpecificOptions}}
+ 										{{else}}
+ 										<li class = "simple-small-text" > No Options.</li>
+ 										{{/if}}
+ 									{{/if}}
+ 									<li role = "none" class = "seprator"></li>
+ 								</ul>
+ 									<a href="/logout" class = "optionsBtn logout-btn">
+ 										<h3 class = "medium-text">Logout</h3>
+ 										<div class = "logout-icon" uk-icon="sign-out"></div>
+ 									</a>
+ 							</div>
+ 						</div>
+ 						<a href="/user-settings" class = "settings-icon" uk-icon="cog" uk-tooltip="User Settings"></a>
+ 					</div>
+
+ 				</div>
+ 				<div class = "nav-section order-section">
+ 					{{!-- this is search bar  --}}
+ 					<div class="uk-navbar-right">
+				        <div class = "search-btn-div">
+				            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+				            <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+				                <form class="uk-search uk-search-navbar uk-width-1-1">
+				                    <input class="uk-search-input" type="search" placeholder="Search" autofocus>
+				                </form>
+				            </div>
+				        </div>
+
+ 					{{!-- this is filter button  --}}
+ 					<div>
+ 						<button class = "filter-dropdown-btn">
+ 							<div class = "profile-button-container">
+ 								<div class = "user-icon" uk-icon="tag"></div>
+ 									<span class = "user-name">Filter</span>
+ 								<div class = "down-icon" uk-icon="triangle-down"></div>
+ 							</div>
+ 						</button>
+ 						{{!-- this is dropdown  --}}
+						<div class=" filter-dropdown uk-width-large " uk-dropdown="mode: click">
+						    <div class=" uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+						        <div>
+						            <ul class="uk-nav uk-dropdown-nav">
+						                <li class="uk-nav-header">Rooms</li>
+						                <li><a href="#">JUFFLER</a></li>
+						                <li><a href="#">TUSHAR</a></li>
+						                <li><a href="#">HIMANSHU</a></li>
+						                <li><a href="#">ISHAM</a></li>
+						            </ul>
+						        </div>
+						        <div>
+						            <ul class="uk-nav uk-dropdown-nav">
+						                <li class="uk-nav-header">Recent</li>
+						                <li><a href="#">KUNHAL</a></li>
+						                <li><a href="#">SUMIT</a></li>
+						                <li><a href="#">GENERAL</a></li>
+						                <li><a href="#">TEACHER's meeting</a></li>
+						            </ul>
+						        </div>
+						    </div>
+						</div>
+ 					</div>
+						{{!-- this is share button  --}}
+						<div class = "share-btn">
+							<a class = "anchor-btn" href="#">
+								<span uk-tooltip = "Share" class=" pointer-events uk-form-icon" uk-icon="icon: forward"></span>
+							</a>
+						</div>
+
+				    </div>
+ 				</div>
+ 			</nav>
+ 			<nav class = "options-navigator">
+ 				{{!-- left section  --}}
+ 				<div class = "nav-section max-gap">
+ 					<div class="flex-with-two">
+	 					<div class = "share-btn">
+							<a class = "anchor-btn" href="#">
+								<span uk-tooltip = "Notification" class=" pointer-events " uk-icon="icon: bell"></span>
+							</a>
+						</div>
+						<div class = "share-btn">
+							<a class = "anchor-btn" href="#">
+								<span uk-tooltip = "History" class=" pointer-events " uk-icon="icon: history"></span>
+							</a>
+						</div><div class = "share-btn">
+							<a class = "anchor-btn" href="#">
+								<span uk-tooltip = "Whatsapp" class=" pointer-events " uk-icon="icon: whatsapp"></span>
+							</a>
+						</div>
+					</div>
+					{{!-- tab section --}}
+	 				<div class="nav-section">
+	 					<ul class = "tab-list" uk-tab>
+	 						{{#if (equal dashboardContext.position "user")}}
+	 							{{>userSpecificTabLi}}
+							{{else if (equal dashboardContext.position "manager")}}
+								{{>managerSpecificTabLi}}
+							{{else if (equal dashboardContext.position "owner")}}
+								{{>ownerSpecificTabLi}}
+							{{else}}
+							{{/if}}
+	 					</ul>
+	 				</div>
+ 				</div>
+ 				{{!-- right section  --}}
+ 				<div class = "nav-section">
+ 					    <button class="add-new-btn uk-button uk-button-primary uk-button-large">New
+ 					    	<span uk-tooltip = "Whatsapp" class="left-margin-little pointer-events " uk-icon="icon: plus-circle"></span>
+ 					    </button>
+
+ 				</div>
+
+
+ 			</nav>
+ 		</section>
+ 	</div>
+	
+</div>
+
+
+	 {{{body}}}
+
+ {{!-- <!-- java script section  --> --}}
+ <!-- javascript uikit  -->
+    <script type="text/javascript" src="js/uikit.min.js"></script>
+    <script type="text/javascript" src="js/uikit-icons.min.js"></script>
+<!-- custon javascript  -->
+    <script type = "text/javascript" src = "js/custom.js"></script>
+    <script type = "text/javascript" src="js/chat.js"></script>
+</body>
+</html>

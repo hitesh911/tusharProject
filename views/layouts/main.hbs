@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- custom imports  -->
+    
+    <!-- uikit stuff  -->
+    <link rel="stylesheet" href="css/uikit-rtl.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+
+</head>
+<body>
+    <div class = "toast-outer">
+        <!-- this is for notification  -->
+        {{#if message}}
+               <div class="toast">
+      
+                  <div class="toast-content">
+                    <i class="fas fa-solid fa-check check" uk-icon = "{{message.icon}}"></i>
+
+                    <div class="message">
+                      <span class="text text-1">{{message.heading}}</span>
+                      <span class="text text-2">{{message.msg}}</span>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-xmark closeToast" uk-icon = "close"></i>
+
+                  <div class="toastProgress" ></div>
+                </div>
+                <script>
+                        // this is for toast msg 
+                        toast = document.querySelector(".toast");
+                        icon_circle = document.querySelector(".check");
+                        closeIcon = document.querySelector(".closeToast")
+                        progress = document.querySelector(".toastProgress");
+
+                        function openToast(timeout , color) {
+                            // changing color or toast accordingly 
+                            icon_circle.style.backgroundColor = color;
+                            progress.style.backgroundColor = color;
+                            // specific variables 
+                            timeout = parseInt(timeout);
+                            toast.classList.add("active");
+                            progress.classList.add("active");
+
+                            timer1 = setTimeout(() => {
+                                toast.classList.remove("active");
+                            }, timeout); //1s = 1000 milliseconds
+
+                            timer2 = setTimeout(() => {
+                                progress.classList.remove("active");
+                            }, timeout);
+                        };
+
+                        closeIcon.addEventListener("click", () => {
+                            toast.classList.remove("active");
+
+                            setTimeout(() => {
+                                progress.classList.remove("active");
+                            }, 300);
+
+                            clearTimeout(timer1);
+                            clearTimeout(timer2);
+                        });
+                        openToast("{{message.timeout}}" , "{{message.color}}");
+                </script>
+
+        {{/if}}
+    </div>
+
+
+    <nav class = "navBar" >
+        <div class = "navDiv">
+            <a class = "homeLink" href="/">
+                <img src="images/bg.png" , class = "siteIcon">
+                
+            </a>
+            <div class  = "navOthers">
+                <div class = "navItems">
+                    <ul class = "navItemsList">
+                        <li class = "navItem">Services</li>
+                        <li class = "navItem">About Us</li>
+                        <li class = "navItem">Contact Us</li>
+                    </ul>
+                </div>
+                <div class = "navAuthSection">
+                    <ul class =" navAuthSectionItems" >
+                        <li class = "navItem">Sign in</li>
+                        <li class = "navItem">Create new</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+	
+ {{{body}}}
+
+ <!-- java script section  --->
+ <!-- javascript uikit  -->
+    <script type="text/javascript" src="js/uikit.js"></script>
+    <script type="text/javascript" src="js/uikit-icons.min.js"></script>
+<!-- custon javascript  -->
+    <script type = "text/javascript" src = "js/custom.js"></script>
+    
+</body>
+</html>
