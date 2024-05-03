@@ -31,15 +31,17 @@ Our Chat Room application offers a platform for students and staff members to en
 
 ## Screenshots
 
-### Home Screen (home.png)
+### Home Screen
 
-![Home Screen](homescreen.png)
+![Home Screen - Desktop](homescreen.png)
+![Home Screen - Mobile](homescreen_mobile.png)
 
 The home screen serves as the entry point for users, where they can log in or create a new account. Students can log in using their Student ID or University Roll Number, while staff members can log in using their names. Google OAuth2 authentication is used for secure login.
 
-### Dashboard (dashboard.png)
+### Dashboard
 
-![Dashboard](dashboard.png)
+![Dashboard - Desktop](dashboard.png)
+![Dashboard - Mobile](dashboard_mobile.png)
 
 The dashboard is the main interface for users after logging in. Here, students and staff members can engage in real-time chat with each other. Staff members' identities remain anonymous in the chat, while students' names are displayed with their messages.
 
@@ -127,3 +129,4 @@ To set up the project locally, follow these steps:
 ## Note
 
 This project was developed as a learning experience and is not associated with any tutorial or course. It was built with the intention of providing a practical application for college students and staff members to facilitate communication within the college community.
+
